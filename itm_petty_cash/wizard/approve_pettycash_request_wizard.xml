@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- -*- coding: utf-8 -*- Odoo, Open Source Business Analytics Reports. 
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data>
+        <!-- form view of cash ledger report wizard -->
+        <record model="ir.ui.view" id="approve_pettycash_request_wizard_view">
+            <field name="name">approve.pettycash.request.wizard.view</field>
+            <field name="model">approve.pettycash.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Aproove Petty Cash Request">
+                    <p>
+                    Please set a payment journal to transfer the funds from.
+                    </p>
+                    <group>
+                        <field name="journal_id" width="40%"/>
+                    </group>
+                    <footer>
+                        <button name="do_approve" type="object" string="Approve"
+                            class="btn-primary" />
+                        or
+                        <button special="cancel" string="Cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- action for cash ledger wizard -->
+        <record id="launch_approve_pettycash_request_wizard" model="ir.actions.act_window">
+            <field name="name">Aproove Petty Cash Request</field>
+            <field name="res_model">approve.pettycash.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

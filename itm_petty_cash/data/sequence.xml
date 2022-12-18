@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- -*- coding: utf-8 -*- Odoo, Open Source Itm Petty Cash . License AGPL-3.0 
+	or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+	<data>
+		<!-- Sequence for petty cash -->
+		<record id="seq_petty_cash" model="ir.sequence">
+			<field name="name">Petty Cash</field>
+			<field name="code">petty.cash</field>
+			<field name="prefix">Petty/</field>
+			<field name="padding">6</field>
+			<field name="number_increment">1</field>
+		</record>
+
+		<record id="seq_cash_advance" model="ir.sequence">
+			<field name="name">Cash Advance</field>
+			<field name="code">cash.advance</field>
+			<field name="prefix">Advance/</field>
+			<field name="padding">6</field>
+			<field name="number_increment">1</field>
+		</record>
+	</data>
+</odoo>

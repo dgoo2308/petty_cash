@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- -*- coding: utf-8 -*- Odoo, Open Source Itm Petty Cash. License AGPL-3.0 
+    or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data>
+        <record id="group_petty_manager" model="res.groups">
+            <field name="name">Petty Cash Manager</field>
+            <field name="category_id" ref="base.module_category_accounting_and_finance" />
+        </record>
+
+        <record id="group_advancecash_user" model="res.groups">
+            <field name="name">Cash Advance User</field>
+            <field name="category_id" ref="base.module_category_accounting_and_finance" />
+        </record>
+        
+        <record id="employee_rule_plant" model="ir.rule">
+            <field name="name">PlantWise Employee</field>
+            <field ref="hr.model_hr_employee" name="model_id"/>
+            <field name="domain_force">
+                [('plant_id','in', [x.plant_id.id for x in user.employee_ids])]
+            </field>
+        </record>
+        
+        <record id="petty_rule_plant" model="ir.rule">
+            <field name="name">PlantWise PettyCash</field>
+            <field ref="model_petty_cash" name="model_id"/>
+            <field name="domain_force">
+                [('requested_employee_id.plant_id','in', [x.plant_id.id for x in user.employee_ids])]
+            </field>
+        </record>
+        
+        <record id="advance_rule_plant" model="ir.rule">
+            <field name="name">PlantWise Cash Advance</field>
+            <field ref="model_cash_advance" name="model_id"/>
+            <field name="domain_force">
+                [('requested_employee_id.plant_id','in', [x.plant_id.id for x in user.employee_ids])]
+            </field>
+        </record>
+        
+        <record id="expense_rule_plant" model="ir.rule">
+            <field name="name">PlantWise expense</field>
+            <field ref="hr_expense.model_hr_expense" name="model_id"/>
+            <field name="domain_force">
+                [('employee_id.plant_id','in', [x.plant_id.id for x in user.employee_ids])]
+            </field>
+        </record>
+        
+        <record id="expense_sheet_rule_plant" model="ir.rule">
+            <field name="name">PlantWise expensesheet</field>
+            <field ref="hr_expense.model_hr_expense_sheet" name="model_id"/>
+            <field name="domain_force">
+                [('employee_id.plant_id','in', [x.plant_id.id for x in user.employee_ids])]
+            </field>
+        </record>
+    </data>
+</odoo>

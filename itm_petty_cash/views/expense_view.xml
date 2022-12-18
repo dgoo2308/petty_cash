@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_expense_from_advance_actions" model="ir.actions.act_window">
+        <field name="name">My Cash Advance Expenses </field>
+        <field name="res_model">hr.expense</field>
+        <field name="view_mode">tree,kanban,form,graph,pivot</field>
+        <field name="search_view_id" ref="hr_expense.view_hr_expense_filter" />
+        <field name="domain">[('employee_id.user_id', '=', uid),('payment_mode', '=', 'advance')]</field>
+        <field name="context">{'search_default_to_report': 1,'advance':1}</field>
+        <field name="help" type="html">
+            <p>
+                The steps to process expenses are:
+                <ol>
+                    <li>You record expenses,</li>
+                    <li>Periodically, you submit expenses report to your manager,</li>
+                    <li>Once approved, your expense report, goes to the accounting,
+                    </li>
+                    <li>The accountant validates entries and reimburse/approves expense
+                        from the advance.
+                    </li>
+                </ol>
+            </p>
+        </field>
+    </record>
+
+    <record id="hr_expense_advance_actions_all" model="ir.actions.act_window">
+        <field name="name">Cash Advance Expenses</field>
+        <field name="res_model">hr.expense</field>
+        <field name="view_mode">kanban,tree,graph,pivot,form</field>
+        <field name="search_view_id" ref="hr_expense.view_hr_expense_filter" />
+        <field name="domain">[('payment_mode', '=', 'advance')]</field>
+        <field name="context">{'advance':1}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create a new expense.
+                <br />
+                <!-- Or send receipts to .... -->
+            </p>
+            <p>
+                Expenses will go through these steps:
+            </p>
+            <ol>
+                <li>You record expenses</li>
+                <li>Periodically, you submit expenses report to your manager,</li>
+                <li>Once approved, your expenses report goes to the accounting,</li>
+                <li>The accountant validates journal entries and reimburse//approves
+                    expense from the advance.
+                </li>
+            </ol>
+        </field>
+    </record>
+</odoo>

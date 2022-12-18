@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -*- coding: utf-8 -*- Odoo, Open Source Itm Cash Advance . License AGPL-3.0 
+    or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data>
+        <menuitem id="main_menu_petty_cash_list" name="Petty Cash"
+            groups="account.group_account_user,account.group_account_manager,hr_expense.group_hr_expense_user,group_advancecash_user,group_petty_manager"
+            sequence="4" />
+
+        <menuitem id="menu_petty_cash_my_main" name="My Requests"
+            groups="account.group_account_user,account.group_account_manager,hr_expense.group_hr_expense_user,group_advancecash_user,group_petty_manager"
+            sequence="4" parent="main_menu_petty_cash_list" />
+
+        <menuitem id="menu_petty_cash_my_draft_request" name="Petty Cash Requests"
+            action="action_petty_cash_to_request" parent="menu_petty_cash_my_main"
+            sequence="1" groups="group_petty_manager,account.group_account_manager" />
+
+        <menuitem id="menu_petty_cash_my_main_approvals" name="My Approvals"
+            groups="account.group_account_user,account.group_account_manager,hr_expense.group_hr_expense_manager,group_advancecash_user,group_petty_manager"
+            sequence="4" parent="main_menu_petty_cash_list" />
+
+        <menuitem id="menu_petty_cash_my_approve" name="Petty Cash Approve"
+            action="action_petty_cash_to_approve" parent="menu_petty_cash_my_main_approvals"
+            sequence="1" groups="group_petty_manager,account.group_account_manager" />
+
+        <menuitem id="menu_cash_advance_my_draft_request" name="Cash Advance Requests"
+            action="action_cash_advance_to_request" parent="menu_petty_cash_my_main"
+            sequence="1" groups="group_advancecash_user,account.group_account_manager" />
+
+        <menuitem id="menu_cash_advance_my_approve" name="Cash Advance Approve"
+            action="action_cash_advance_to_approve" parent="menu_petty_cash_my_main_approvals"
+            sequence="1" groups="group_advancecash_user,account.group_account_manager" />
+
+        <menuitem id="menu_cash_advance_expense" name="My Cash Advance Expenses"
+            action="hr_expense_from_advance_actions" parent="menu_petty_cash_my_main"
+            sequence="1" groups="hr_expense.group_hr_expense_user,account.group_account_manager" />
+
+        <menuitem id="menu_cash_advance_expense_manager" name="Cash Advance Expenses"
+            action="hr_expense_advance_actions_all" parent="menu_petty_cash_my_main_approvals"
+            sequence="1" groups="hr_expense.group_hr_expense_manager,account.group_account_manager" />
+        
+
+    </data>
+</odoo>
